@@ -28,7 +28,7 @@ app.use(express.static(publicDirectoryPath, {extensions:['html']}))
 app.get('', (req, res) => {
     res.render('index', {
         title: 'Yo homie, this is the weather',
-        name: 'And mah name is ANDREW MEAD!!!'
+        name: 'They call me the arbitrarionator!!!'
     })
 })
 
