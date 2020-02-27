@@ -38,7 +38,7 @@ weatherForm.addEventListener('submit', (e) => {
 
 
 
-    fetch('http://localhost:3000/weather' + '?' + new URLSearchParams({
+    fetch('/weather' + '?' + new URLSearchParams({
         address: location
     })).then(response => {
         response.json().then(data => {
