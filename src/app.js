@@ -5,9 +5,6 @@ const hbs = require('hbs')
 const geocode = require('./utils/geocode')
 const forecast = require('./utils/forecast')
 
-// console.log(__dirname)
-// console.log(path.join(__dirname, '../public/'))
-
 const app = express()
 const port = process.env.PORT || 3000
 
@@ -28,32 +25,31 @@ app.use(express.static(publicDirectoryPath, {extensions:['html']}))
 
 app.get('', (req, res) => {
     res.render('index', {
-        title: 'Yo homie, this is the weather',
-        name: 'They call me the arbitrarionator!!!'
+        title: 'Weather',
+        name: 'eetnar'
     })
 })
 
 app.get('/about', (req, res) => {
     res.render('about', {
         title: 'About',
-        name: 'Yolo smithigan'
+        name: 'eetnar'
     })
 })
 
 app.get('/help', (req, res) => {
     res.render('help', {
-        helpText: 'This is some helpful text',
-        title: 'This is the help page',
-        name: 'It was created by meeeeeeee'
+        helpText: 'This is some helpful text. See? Ah yes, feel helped.',
+        title: 'Help',
+        name: 'eetnar the 2nd'
     })
 })
 
-// app.com/weather
 app.get('/weather', (req, res) => {
 
     if (!req.query.address) {
         return res.send({
-            error: 'aight aight'
+            error: 'Woops! Need a location :)'
         })
     }
 
@@ -61,21 +57,17 @@ app.get('/weather', (req, res) => {
 
     geocode(location, (error, {longitude, latitude, location} = {}) => {
         if (error) {
-            // return console.log(error)
             return res.send({
-                error: 'something went wrong' + error
+                error: 'Something went wrong: ' + error
             })
         }
     
         forecast(longitude, latitude, (error, forecastData) => {
             if (error) {
-                // return console.log(error)
                 return res.send({
-                    error: 'something went wrong' + error
+                    error: 'Something went wrong: ' + error
                 })
             }
-            // console.log(location)
-            // console.log(forecastData)
 
             res.send({
                 address: req.query['address'],
@@ -84,13 +76,6 @@ app.get('/weather', (req, res) => {
             })
         })
     })
-
-    // res.send({
-    //     forecast: 'forecast string',
-    //     location: 'location string',
-    //     name: 'haha ok',
-    //     address: req.query['address']
-    // })
     
 })
 

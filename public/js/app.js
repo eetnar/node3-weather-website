@@ -21,8 +21,6 @@ const search = document.querySelector('input')
 const messageOne = document.querySelector('#message-1')
 const messageTwo = document.querySelector('#message-2')
 
-// console.log(messageOne, messageTwo)
-
 messageOne.textContent = 'Go ahead and type in a location'
 
 
