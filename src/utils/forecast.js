@@ -12,7 +12,7 @@ const forecast = (lat, long, callback) => {
             callback(`${body.error}`, undefined)
         } else {
             const {temperature, precipProbability} = body.currently
-            const message = `It is currently ${temperature} degrees. There is a ${precipProbability}% chance of rain`
+            const message = `It is currently ${Math.round(temperature)}°F degrees. There is a ${precipProbability}% chance of rain.`
 
             callback(undefined, message)
         }
